@@ -1,0 +1,21 @@
+matrix:
+  include:
+    - language: android
+      jdk: oraclejdk8
+      android:
+        components:
+          - tools
+          - platform-tools
+          - build-tools-28.0.3
+          - tools
+script:
+  - ./build_openalpr_android.sh
+deploy:
+  provider: npm
+  email: robert.sasak@gmail.com
+  api_key:
+    secure: TO-BE-ADDED-LATER
+  on:
+    tags: true
+    repo: RobertSasak/openalpr-android
+    branch: master
