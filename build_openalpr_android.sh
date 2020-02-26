@@ -39,7 +39,7 @@ cd ..
 ####################################################################
 
 wget --quiet -O opencv-3.2.0-android-sdk.zip -- https://sourceforge.net/projects/opencvlibrary/files/opencv-android/3.2.0/opencv-3.2.0-android-sdk.zip/download 
-unzip opencv-3.2.0-android-sdk.zip
+unzip -q opencv-3.2.0-android-sdk.zip
 rm opencv-3.2.0-android-sdk.zip
 
 ####################################################################
@@ -67,7 +67,7 @@ declare -a ANDROID_ABIS=(
 			 #"mips"
 			 #"mips64"
 			 #"x86"
-			 "x86_64"
+			 #"x86_64"
 			)
 
 cd openalpr/android-build
@@ -110,7 +110,7 @@ Generating project for arch $i
 	-DCMAKE_BUILD_TYPE=Release \
 	-DANDROID_PLATFORM=$ANDROID_PLATFORM \
 	-DANDROID_ABI="$i" \
-	-DANDROID_STL=c++_static \
+	-DANDROID_STL=gnustl_static \
 	-DANDROID_CPP_FEATURES="rtti exceptions" \
 	-DTesseract_INCLUDE_BASEAPI_DIR=$TESSERACT_SRC_DIR/api \
 	-DTesseract_INCLUDE_CCSTRUCT_DIR=$TESSERACT_SRC_DIR/ccstruct \
