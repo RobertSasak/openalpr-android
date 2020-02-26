@@ -60,13 +60,13 @@ cp **/*.h $SCRIPTPATH/openalpr/src/openalpr/ocr/tesseract
 
 cd $SCRIPTPATH
 
-declare -a ANDROID_ABIS=("armeabi"
-			 "armeabi-v7a"
-			 "armeabi-v7a with NEON"
+declare -a ANDROID_ABIS=(
+			 #"armeabi-v7a"
+			 #"armeabi-v7a with NEON"
 			 "arm64-v8a"
-			 "mips"
-			 "mips64"
-			 "x86"
+			 #"mips"
+			 #"mips64"
+			 #"x86"
 			 "x86_64"
 			)
 
@@ -110,7 +110,7 @@ Generating project for arch $i
 	-DCMAKE_BUILD_TYPE=Release \
 	-DANDROID_PLATFORM=$ANDROID_PLATFORM \
 	-DANDROID_ABI="$i" \
-	-DANDROID_STL=gnustl_static \
+	-DANDROID_STL=c++_static \
 	-DANDROID_CPP_FEATURES="rtti exceptions" \
 	-DTesseract_INCLUDE_BASEAPI_DIR=$TESSERACT_SRC_DIR/api \
 	-DTesseract_INCLUDE_CCSTRUCT_DIR=$TESSERACT_SRC_DIR/ccstruct \
