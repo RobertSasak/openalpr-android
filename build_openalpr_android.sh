@@ -3,6 +3,8 @@
 # You should tweak this section to adapt the paths to your need
 #export ANDROID_HOME=/home/jeremy/Android/Sdk
 #export NDK_ROOT=/home/jeremy/Android/Sdk/ndk-bundle
+echo $ANDROID_HOME
+echo $NDK_ROOT
 
 #ANDROID_PLATFORM="android-21"
 
@@ -34,7 +36,7 @@ cd ..
 # Download and extract OpenCV4Android
 ####################################################################
 
-wget -O opencv-3.2.0-android-sdk.zip -- https://sourceforge.net/projects/opencvlibrary/files/opencv-android/3.2.0/opencv-3.2.0-android-sdk.zip/download 
+wget --quiet -O opencv-3.2.0-android-sdk.zip -- https://sourceforge.net/projects/opencvlibrary/files/opencv-android/3.2.0/opencv-3.2.0-android-sdk.zip/download 
 unzip opencv-3.2.0-android-sdk.zip
 rm opencv-3.2.0-android-sdk.zip
 

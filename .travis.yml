@@ -16,6 +16,8 @@ install:
   - yes | sdkmanager "cmake;3.10.2.4988404"
 before_script:
   - export ANDROID_NDK_ROOT=$ANDROID_HOME/ndk-bundle
+  - echo $NDK_ROOT
+  - export NDK_ROOT=$ANDROID_NDK_ROOT
   - export ANDROID_NDK_HOME=$ANDROID_NDK_ROOT
 script:
   - chmod +x ./build_openalpr_android.sh
