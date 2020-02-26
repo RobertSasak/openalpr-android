@@ -26,8 +26,10 @@ echo $SCRIPTPATH
 git clone --recursive https://github.com/rmtheis/tess-two.git tess2
 
 cd tess2
-echo "sdk.dir=$ANDROID_HOME
-ndk.dir=$NDK_ROOT" > local.properties
+echo -e "sdk.dir=$ANDROID_HOME\nndk.dir=$NDK_ROOT" > local.properties
+echo -e "\nandroid.useAndroidX=true\n" >> gradle.properties
+echo -e "android.enableJetifier=true\n" >> gradle.properties
+cat gradle.properties  
 ./gradlew assemble
 cd ..
 
