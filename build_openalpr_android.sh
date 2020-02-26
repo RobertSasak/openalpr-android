@@ -3,6 +3,8 @@
 # You should tweak this section to adapt the paths to your need
 #export ANDROID_HOME=/home/jeremy/Android/Sdk
 #export NDK_ROOT=/home/jeremy/Android/Sdk/ndk-bundle
+echo $ANDROID_HOME
+echo $NDK_ROOT
 
 #ANDROID_PLATFORM="android-21"
 
@@ -24,8 +26,10 @@ echo $SCRIPTPATH
 git clone --recursive https://github.com/rmtheis/tess-two.git tess2
 
 cd tess2
-echo "sdk.dir=$ANDROID_HOME
-ndk.dir=$NDK_ROOT" > local.properties
+echo -e "sdk.dir=$ANDROID_HOME\nndk.dir=$NDK_ROOT" > local.properties
+echo -e "\nandroid.useAndroidX=true\n" >> gradle.properties
+echo -e "android.enableJetifier=true\n" >> gradle.properties
+cat gradle.properties  
 ./gradlew assemble
 cd ..
 
@@ -34,8 +38,8 @@ cd ..
 # Download and extract OpenCV4Android
 ####################################################################
 
-wget -O opencv-3.2.0-android-sdk.zip -- https://sourceforge.net/projects/opencvlibrary/files/opencv-android/3.2.0/opencv-3.2.0-android-sdk.zip/download 
-unzip opencv-3.2.0-android-sdk.zip
+wget --quiet -O opencv-3.2.0-android-sdk.zip -- https://sourceforge.net/projects/opencvlibrary/files/opencv-android/3.2.0/opencv-3.2.0-android-sdk.zip/download 
+unzip -q opencv-3.2.0-android-sdk.zip
 rm opencv-3.2.0-android-sdk.zip
 
 ####################################################################
@@ -56,14 +60,14 @@ cp **/*.h $SCRIPTPATH/openalpr/src/openalpr/ocr/tesseract
 
 cd $SCRIPTPATH
 
-declare -a ANDROID_ABIS=("armeabi"
-			 "armeabi-v7a"
-			 "armeabi-v7a with NEON"
+declare -a ANDROID_ABIS=(
+			 #"armeabi-v7a"
+			 #"armeabi-v7a with NEON"
 			 "arm64-v8a"
-			 "mips"
-			 "mips64"
-			 "x86"
-			 "x86_64"
+			 #"mips"
+			 #"mips64"
+			 #"x86"
+			 #"x86_64"
 			)
 
 cd openalpr/android-build
