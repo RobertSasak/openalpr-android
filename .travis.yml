@@ -46,8 +46,8 @@ script:
 
   - cd tess2
   - echo -e "sdk.dir=$ANDROID_HOME\nndk.dir=$NDK_ROOT" > local.properties
-  - echo -e "android.useAndroidX=true\n" > gradle.properties
-  - echo -e "android.enableJetifier=true\n" > gradle.properties
+  - echo -e "android.useAndroidX=true\n" >> gradle.properties
+  - echo -e "android.enableJetifier=true\n" >> gradle.properties
   - ./gradlew assemble
   - cd ..
 
